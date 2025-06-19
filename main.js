@@ -1492,11 +1492,6 @@ class HusqvarnaAutomower extends utils.Adapter {
 						ack: true,
 					});
 
-					this.setState(`${mowerData.data[i].id}.battery.batteryPercent`, {
-						val: mowerData.data[i].attributes.battery.batteryPercent,
-						ack: true,
-					});
-
 					this.setState(`${mowerData.data[i].id}.capabilities.canConfirmError`, {
 						val: mowerData.data[i].attributes.capabilities.canConfirmError,
 						ack: true,
@@ -1517,128 +1512,135 @@ class HusqvarnaAutomower extends utils.Adapter {
 						val: mowerData.data[i].attributes.capabilities.workAreas,
 						ack: true,
 					});
+				}
 
-					this.setState(`${mowerData.data[i].id}.mower.mode`, {
-						val: mowerData.data[i].attributes.mower.mode,
-						ack: true,
-					});
-					this.setState(`${mowerData.data[i].id}.mower.activity`, {
-						val: mowerData.data[i].attributes.mower.activity,
-						ack: true,
-					});
-					this.setState(`${mowerData.data[i].id}.mower.inactiveReason`, {
-						val: mowerData.data[i].attributes.mower.inactiveReason,
-						ack: true,
-					});
-					this.setState(`${mowerData.data[i].id}.mower.state`, {
-						val: mowerData.data[i].attributes.mower.state,
-						ack: true,
-					});
-					this.setState(`${mowerData.data[i].id}.mower.workAreaId`, {
-						val: mowerData.data[i].attributes.mower.workAreaId,
-						ack: true,
-					});
-					this.setState(`${mowerData.data[i].id}.mower.errorCode`, {
-						val: mowerData.data[i].attributes.mower.errorCode,
-						ack: true,
-					});
-					this.setState(`${mowerData.data[i].id}.mower.errorCodeTimestamp`, {
-						val: mowerData.data[i].attributes.mower.errorCodeTimestamp,
-						ack: true,
-					});
-					this.setState(`${mowerData.data[i].id}.mower.isErrorConfirmable`, {
-						val: mowerData.data[i].attributes.mower.isErrorConfirmable,
-						ack: true,
-					});
 
-					// set all values in "calendar"
-					for (let j = 0; j < Object.keys(mowerData.data[i].attributes.calendar.tasks).length; j++) {
-						this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.start`, {
-							val: mowerData.data[i].attributes.calendar.tasks[j].start,
-							ack: true,
-						});
-						this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.duration`, {
-							val: mowerData.data[i].attributes.calendar.tasks[j].duration,
-							ack: true,
-						});
-						this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.monday`, {
-							val: mowerData.data[i].attributes.calendar.tasks[j].monday,
-							ack: true,
-						});
-						this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.tuesday`, {
-							val: mowerData.data[i].attributes.calendar.tasks[j].tuesday,
-							ack: true,
-						});
-						this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.wednesday`, {
-							val: mowerData.data[i].attributes.calendar.tasks[j].wednesday,
-							ack: true,
-						});
-						this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.thursday`, {
-							val: mowerData.data[i].attributes.calendar.tasks[j].thursday,
-							ack: true,
-						});
-						this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.friday`, {
-							val: mowerData.data[i].attributes.calendar.tasks[j].friday,
-							ack: true,
-						});
-						this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.saturday`, {
-							val: mowerData.data[i].attributes.calendar.tasks[j].saturday,
-							ack: true,
-						});
-						this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.sunday`, {
-							val: mowerData.data[i].attributes.calendar.tasks[j].sunday,
-							ack: true,
-						});
-						if (mowerData.data[i].attributes.capabilities.workAreas) {
-							this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.workAreaId`, {
-								val: mowerData.data[i].attributes.calendar.tasks[j].workAreaId,
-								ack: true,
-							});
-						}
-					}
+				this.setState(`${mowerData.data[i].id}.battery.batteryPercent`, {
+					val: mowerData.data[i].attributes.battery.batteryPercent,
+					ack: true,
+				});
 
-					this.setState(`${mowerData.data[i].id}.planner.nextStartTimestamp`, {
-						val: mowerData.data[i].attributes.planner.nextStartTimestamp,
-						ack: true,
-					});
-					this.setState(`${mowerData.data[i].id}.planner.override`, {
-						val: mowerData.data[i].attributes.planner.override.action,
-						ack: true,
-					});
-					this.setState(`${mowerData.data[i].id}.planner.restrictedReason`, {
-						val: mowerData.data[i].attributes.planner.restrictedReason,
-						ack: true,
-					});
-					if (mowerData.data[i].attributes.capabilities.position && mowerData.data[i].attributes.positions.length > 0) {
-						this.setState(`${mowerData.data[i].id}.positions.latitude`, {
-							val: mowerData.data[i].attributes.positions[0].latitude,
-							ack: true,
-						});
-						this.setState(`${mowerData.data[i].id}.positions.longitude`, {
-							val: mowerData.data[i].attributes.positions[0].longitude,
-							ack: true,
-						});
-						this.setState(`${mowerData.data[i].id}.positions.latlong`, {
-							val: `${mowerData.data[i].attributes.positions[0].latitude};${mowerData.data[i].attributes.positions[0].longitude}`,
-							ack: true,
-						});
-						this.setState(`${mowerData.data[i].id}.positions.positions`, {
-							val: `${JSON.stringify(mowerData.data[i].attributes.positions)}`,
-							ack: true,
-						});
-					}
+				this.setState(`${mowerData.data[i].id}.mower.mode`, {
+					val: mowerData.data[i].attributes.mower.mode,
+					ack: true,
+				});
+				this.setState(`${mowerData.data[i].id}.mower.activity`, {
+					val: mowerData.data[i].attributes.mower.activity,
+					ack: true,
+				});
+				this.setState(`${mowerData.data[i].id}.mower.inactiveReason`, {
+					val: mowerData.data[i].attributes.mower.inactiveReason,
+					ack: true,
+				});
+				this.setState(`${mowerData.data[i].id}.mower.state`, {
+					val: mowerData.data[i].attributes.mower.state,
+					ack: true,
+				});
+				this.setState(`${mowerData.data[i].id}.mower.workAreaId`, {
+					val: mowerData.data[i].attributes.mower.workAreaId,
+					ack: true,
+				});
+				this.setState(`${mowerData.data[i].id}.mower.errorCode`, {
+					val: mowerData.data[i].attributes.mower.errorCode,
+					ack: true,
+				});
+				this.setState(`${mowerData.data[i].id}.mower.errorCodeTimestamp`, {
+					val: mowerData.data[i].attributes.mower.errorCodeTimestamp,
+					ack: true,
+				});
+				this.setState(`${mowerData.data[i].id}.mower.isErrorConfirmable`, {
+					val: mowerData.data[i].attributes.mower.isErrorConfirmable,
+					ack: true,
+				});
 
-					this.setState(`${mowerData.data[i].id}.ACTIONS.CUTTINGHEIGHT`, {
-						val: mowerData.data[i].attributes.settings.cuttingHeight.height,
+				// set all values in "calendar"
+				for (let j = 0; j < Object.keys(mowerData.data[i].attributes.calendar.tasks).length; j++) {
+					this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.start`, {
+						val: mowerData.data[i].attributes.calendar.tasks[j].start,
 						ack: true,
 					});
-					if (mowerData.data[i].attributes.capabilities.headlights) {
-						this.setState(`${mowerData.data[i].id}.ACTIONS.HEADLIGHT`, {
-							val: mowerData.data[i].attributes.settings.headlight.mode,
+					this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.duration`, {
+						val: mowerData.data[i].attributes.calendar.tasks[j].duration,
+						ack: true,
+					});
+					this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.monday`, {
+						val: mowerData.data[i].attributes.calendar.tasks[j].monday,
+						ack: true,
+					});
+					this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.tuesday`, {
+						val: mowerData.data[i].attributes.calendar.tasks[j].tuesday,
+						ack: true,
+					});
+					this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.wednesday`, {
+						val: mowerData.data[i].attributes.calendar.tasks[j].wednesday,
+						ack: true,
+					});
+					this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.thursday`, {
+						val: mowerData.data[i].attributes.calendar.tasks[j].thursday,
+						ack: true,
+					});
+					this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.friday`, {
+						val: mowerData.data[i].attributes.calendar.tasks[j].friday,
+						ack: true,
+					});
+					this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.saturday`, {
+						val: mowerData.data[i].attributes.calendar.tasks[j].saturday,
+						ack: true,
+					});
+					this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.sunday`, {
+						val: mowerData.data[i].attributes.calendar.tasks[j].sunday,
+						ack: true,
+					});
+					if (mowerData.data[i].attributes.capabilities.workAreas) {
+						this.setState(`${mowerData.data[i].id}.ACTIONS.schedule.${[j]}.workAreaId`, {
+							val: mowerData.data[i].attributes.calendar.tasks[j].workAreaId,
 							ack: true,
 						});
 					}
 				}
+
+				this.setState(`${mowerData.data[i].id}.planner.nextStartTimestamp`, {
+					val: mowerData.data[i].attributes.planner.nextStartTimestamp,
+					ack: true,
+				});
+				this.setState(`${mowerData.data[i].id}.planner.override`, {
+					val: mowerData.data[i].attributes.planner.override.action,
+					ack: true,
+				});
+				this.setState(`${mowerData.data[i].id}.planner.restrictedReason`, {
+					val: mowerData.data[i].attributes.planner.restrictedReason,
+					ack: true,
+				});
+				if (mowerData.data[i].attributes.capabilities.position && mowerData.data[i].attributes.positions.length > 0) {
+					this.setState(`${mowerData.data[i].id}.positions.latitude`, {
+						val: mowerData.data[i].attributes.positions[0].latitude,
+						ack: true,
+					});
+					this.setState(`${mowerData.data[i].id}.positions.longitude`, {
+						val: mowerData.data[i].attributes.positions[0].longitude,
+						ack: true,
+					});
+					this.setState(`${mowerData.data[i].id}.positions.latlong`, {
+						val: `${mowerData.data[i].attributes.positions[0].latitude};${mowerData.data[i].attributes.positions[0].longitude}`,
+						ack: true,
+					});
+					this.setState(`${mowerData.data[i].id}.positions.positions`, {
+						val: `${JSON.stringify(mowerData.data[i].attributes.positions)}`,
+						ack: true,
+					});
+				}
+
+				this.setState(`${mowerData.data[i].id}.ACTIONS.CUTTINGHEIGHT`, {
+					val: mowerData.data[i].attributes.settings.cuttingHeight.height,
+					ack: true,
+				});
+				if (mowerData.data[i].attributes.capabilities.headlights) {
+					this.setState(`${mowerData.data[i].id}.ACTIONS.HEADLIGHT`, {
+						val: mowerData.data[i].attributes.settings.headlight.mode,
+						ack: true,
+					});
+				}
+
 
 				this.setState(`${mowerData.data[i].id}.metadata.connected`, {
 					val: mowerData.data[i].attributes.metadata.connected,
